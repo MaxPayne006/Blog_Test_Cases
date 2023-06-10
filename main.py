@@ -6,10 +6,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+# Create ChromeOptions object
+chrome_options = webdriver.ChromeOptions()
+
+# Add headless mode option
+chrome_options.add_argument("--no-sanbox")
+chrome_options.add_argument("--headless")
+
+chrome_options.add_argument("--disable-dev-shm-usage")
 
 
 service_object = Service(binary_path)
-driver = webdriver.Chrome(service=service_object)
+driver = webdriver.Chrome(service=service_object,options=chrome_options)
 wait = WebDriverWait(driver, 20)
 
 
